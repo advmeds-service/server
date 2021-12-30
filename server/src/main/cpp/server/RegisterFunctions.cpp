@@ -4,13 +4,14 @@
 
 #include <jni.h>
 #include "Define.h"
+#include "ServerManager.h"
 
 void startServer(JNIEnv *env, jobject server, jint port) {
-    LOGI("start server port %d", port);
+    ServerManager::getInstance().startServer(port);
 }
 
 void stopServer(JNIEnv *env, jobject server) {
-    LOGI("stop server");
+    ServerManager::getInstance().stopServer();
 }
 
 static const char *nativeServerClassName = "com/advmeds/server/Server";
@@ -25,7 +26,7 @@ jint registerNativeServerFunction(JNIEnv *env) {
         LOGI("env is null");
         return JNI_FALSE;
     }
-    LOGI("env address %p", env);
+
     jclass clazz = env->FindClass(nativeServerClassName);
     if (clazz == nullptr) {
         LOGI("not found class %s",nativeServerClassName);

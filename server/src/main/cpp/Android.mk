@@ -5,7 +5,8 @@ include $(CLEAR_VARS)
 LOCAL_MODULE    := advmedsServer
 LOCAL_SRC_FILES := server/Jni.cpp \
                    server/Define.h \
-                   server/RegisterFunctions.cpp
+                   server/RegisterFunctions.cpp \
+                   server/ServerManager.cpp
 
 LOCAL_LDLIBS := -llog
 
